@@ -1,13 +1,9 @@
 package CODE;
 
-public class Admin implements IUser {
-    public int Id = 0;
-    public String FirstName = "";
-    public String LastName = "";
+public class Admin extends User {
 
-    public String UserName = "";
-
-    public String Password = "";
-    public String UserRole = StaticDetails.ROLE_ADMIN;
+    public  Admin(){
+        this.UserRole = StaticDetails.ROLE_ADMIN;
+    }
 }
 

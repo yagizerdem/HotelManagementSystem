@@ -1,8 +1,6 @@
 package CODE;
 
-import javax.swing.plaf.nimbus.State;
-
-public interface IUser {
+public class User {
     public int Id = 0;
     public String FirstName = "";
     public String LastName = "";

@@ -1,5 +1,7 @@
 package UI;
 
+import CODE.UserManager;
+
 import javax.swing.*;
 import java.awt.*;
 public class LogIn {
@@ -40,20 +42,32 @@ public class LogIn {
         userNameLable.setBounds(110,210,100 , 10);
         userNameLable.setForeground(Color.BLACK);
         back.add(userNameLable);
-        JTextField passwordField = new JTextField();
-        passwordField.setBounds(110,220,180 , 40);
-        back.add(passwordField);
+        JTextField userNameField = new JTextField();
+        userNameField.setBounds(110,220,180 , 40);
+        back.add(userNameField);
         //
         // Input type text password
         JLabel passwordLabel = new JLabel("enter password");
         passwordLabel.setBounds(110,260,100 , 10);
         passwordLabel.setForeground(Color.BLACK);
         back.add(passwordLabel);
-        JTextField userNameField = new JTextField();
-        userNameField.setBounds(110,270,180 , 40);
-        back.add(userNameField);
+        JTextField passwordField = new JTextField();
+        passwordField.setBounds(110,270,180 , 40);
+        back.add(passwordField);
         //
 
+        // event handlers
+        logInButton.addActionListener(e ->
+        {
+            String password = passwordField.getText();
+            String userName = userNameField.getText();
+            boolean flag = UserManager.CheckLogIn(userName , password);
+
+            if(flag){
+                // logged in successfull redirect to new frame
+                
+            }
+        });
 
     }
 

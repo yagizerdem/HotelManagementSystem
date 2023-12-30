@@ -1,5 +1,5 @@
 import CODE.Admin;
-import CODE.IUser;
+import CODE.User;
 import CODE.StaticDetails;
 import CODE.VirtualDatabase;
 import UI.LogIn;
