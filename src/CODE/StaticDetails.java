@@ -12,6 +12,7 @@ public  class  StaticDetails {
     public static String ROLE_ANONIM = "ANONIMOUS";
     //
 
-
+    // database file paths
+    public static  String AdminDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\AdminDb.txt";
 
 }
