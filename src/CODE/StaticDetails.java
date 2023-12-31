@@ -16,6 +16,5 @@ public  class  StaticDetails {
     public static  String AdminDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\AdminDb.txt";
     public static String RoomDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\RoomDb.txt";
     public static String CustomerDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\CustomerDb.txt";
-
-
+    public static String  ReceptionistDatatbasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\ReceptionistDb.txt";
 }

@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         // Load database to ram
         VirtualDatabase.LoadVirtualDatabase();
-//        ArrayList<Customer> customers = VirtualDatabase.CustomerDatabase;
+//        ArrayList<Receptionist> list = VirtualDatabase.ReceptionistDatabase;
 //        int a = 0;
         SwingUtilities.invokeLater(new Runnable() {
             @Override
