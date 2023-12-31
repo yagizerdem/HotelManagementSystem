@@ -21,5 +21,8 @@ public class Utility {
         return  content.toString();
     }
 
+    public static Integer GenerateRandomId(){
+        return  (int)Math.random() * 1000000;
+    }
 
 }

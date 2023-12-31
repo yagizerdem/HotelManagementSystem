@@ -1,0 +1,3 @@
+AdminDb --> [UserId];[FirstName];[LastName];[UserName];[UserId];
+RoomDb -->[RoomId];[FloorNo];[bedCount];[roomFacility];[price];[OccupiedCustomerId]; // if occupied customer id is -1 room is available
+CustomerDb --> [CustomerId];[FirstName];[LastName];[EntrenceDate];[ExitDate]
