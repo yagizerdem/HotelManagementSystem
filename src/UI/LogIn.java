@@ -1,6 +1,6 @@
 package UI;
 
-import CODE.UserManager;
+import CODE.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,10 +62,15 @@ public class LogIn {
             String password = passwordField.getText();
             String userName = userNameField.getText();
             boolean flag = UserManager.CheckLogIn(userName , password);
-
+            System.out.println(UserManager.ROLE + " " + UserManager.ActiveUserName);
+            System.out.println(flag);
             if(flag){
+
                 // logged in successfull redirect to new frame
-                
+                if(UserManager.ROLE.equals(StaticDetails.ROLE_RECEPTION)){
+                    new ReceptionistPanel();
+                    frame.dispose();
+                }
             }
         });
 
