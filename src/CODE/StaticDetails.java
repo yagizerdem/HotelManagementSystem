@@ -17,4 +17,12 @@ public  class  StaticDetails {
     public static String RoomDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\RoomDb.txt";
     public static String CustomerDatabasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\CustomerDb.txt";
     public static String  ReceptionistDatatbasePath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT\\ReceptionistDb.txt";
+
+    // logtypes
+    public  static String errorLog = "errors";
+    public static String warningLog = "warning";
+    public static String infoLog = "info";
+    // log path
+    public  static  String LogFolderPath = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\log";
+
 }

@@ -81,7 +81,6 @@ public class Utility {
         return -1; // Value not found in the array
     }
 
-
     public static void BackupDatabase(){
         File theDir = new File("C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\DatabaseBackup\\Records");
         boolean RecoredsExist = theDir.exists();
@@ -99,9 +98,11 @@ public class Utility {
         if(!RecoredsExist){
             try{
                 recordDir.mkdir();
+                EventLogger.log("database record folder created successfull" , StaticDetails.infoLog);
             }catch (Exception ex){
                 String message = getExceptionAsString(ex);
                 new ErrorScreen("Something went wrog contactk with It workers \n\n " + message);
+                EventLogger.log(message , StaticDetails.errorLog);
             }
         }
 
@@ -109,19 +110,24 @@ public class Utility {
         String CONTEXTPATH = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT";
         File CONTEXTDIRECTORY = new File(CONTEXTPATH);
         String[] list = CONTEXTDIRECTORY.list();
+        int currentIndex = 0;
         for(String item : list){
             Path  sourecePath = Paths.get(CONTEXTPATH + "\\" + item);
             Path  destinationPath = Paths.get(recordDir +"\\" + item);
             try {
                 Files.copy(sourecePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                if(currentIndex == list.length - 1){
+                    EventLogger.log("Database files resotred successfull" , StaticDetails.infoLog);
+                }
             }catch (Exception ex){
                 String message = getExceptionAsString(ex);
                 new ErrorScreen("Something went wrog contactk with It workers \n\n " + message);
+                EventLogger.log(message , StaticDetails.errorLog);
             }
+            currentIndex++;
         }
     }
-
-    private static String getExceptionAsString(Throwable throwable) {
+    public static String getExceptionAsString(Throwable throwable) {
         // Create a StringBuilder to build the exception information
         StringBuilder exceptionInfo = new StringBuilder();
 
@@ -142,22 +148,5 @@ public class Utility {
 
         return exceptionInfo.toString();
     }
-
-    private  static void Logger(String path , String message){
-        // creating logging folder
-        File theDir = new File("C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\Logs");
-        boolean RecoredsExist = theDir.exists();
-        if(!RecoredsExist){
-            try{
-                theDir.mkdir();
-            }catch (Exception ex){
-                String errorMessage = getExceptionAsString(ex);
-                new ErrorScreen("Something went wrog contack with It workers \n\n " + errorMessage);
-            }
-        }
-        //
-
-    }
-
 
 }

@@ -8,7 +8,6 @@ public class Main {
         // Load database to ram
         VirtualDatabase.LoadVirtualDatabase();
 
-
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

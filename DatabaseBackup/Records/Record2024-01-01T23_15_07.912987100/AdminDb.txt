@@ -1,3 +1,0 @@
-1;yagiz;erdem;yagizerdem;1234
-2;ahmet;bozkus;ahmetbozkus;12345
-3;elif;baser;elifbaser;123

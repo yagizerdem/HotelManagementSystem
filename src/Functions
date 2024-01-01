@@ -1,2 +1,3 @@
 Utility.BackupDatabase(); --> call this function for backup database
 VirtualDatabase.LoadVirtualDatabase(); --> load virtula database to ram
+Eventlogger.log --> call this function for logging data to file system
