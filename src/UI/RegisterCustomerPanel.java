@@ -83,13 +83,32 @@ public class RegisterCustomerPanel {
         frame.setContentPane(contentPane);
 
 
-//        submitFormBtn.addActionListener(e -> {
-//            String FirstName =
-//        });
+        submitFormBtn.addActionListener(e -> {
+            try{
+                String FirstName = FirstNameField.getText();
+                String LastName = LastNameFiled.getText();
+                int Price = Integer.parseInt(PriceField.getText());
+                int DiscountRate = Integer.parseInt(DiscountRateField.getText());
+                String  Tc = TCField.getText();
+                int AcomodationAmount = Integer.parseInt(AccomodationAmountField.getText());
+
+
+                frame.dispose();
+                new ReceptionistPanel();
+            }catch (Exception ex){
+                showErrorPopup("Exception Occurred", ex.getMessage());
+            }
+
+        });
 
         goBackBtn.addActionListener(e ->{
             frame.dispose();
             new ReceptionistPanel();
         });
+
+
+    }
+    private static void showErrorPopup(String title, String message) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
     }
 }
