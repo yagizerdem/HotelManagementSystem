@@ -1,0 +1,2 @@
+Utility.BackupDatabase(); --> call this function for backup database
+VirtualDatabase.LoadVirtualDatabase(); --> load virtula database to ram

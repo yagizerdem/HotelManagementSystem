@@ -1,10 +1,14 @@
 package CODE;
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
+import UI.ErrorScreen;
+
+import java.io.*;
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner; // Import the Scanner class to read text files
+import java.nio.file.*;
 public class Utility {
 
     public static String ReadFile(String path){
@@ -76,5 +80,84 @@ public class Utility {
         }
         return -1; // Value not found in the array
     }
+
+
+    public static void BackupDatabase(){
+        File theDir = new File("C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\DatabaseBackup\\Records");
+        boolean RecoredsExist = theDir.exists();
+        if(!RecoredsExist){
+            try{
+                theDir.mkdir();
+            }catch (Exception ex){
+                String message = getExceptionAsString(ex);
+                new ErrorScreen("Something went wrog contactk with It workers \n\n " + message);
+            }
+        }
+        // crating record dir
+        File recordDir = new File(theDir,"Record" + LocalDateTime.now().toString().replace(":","_"));
+        RecoredsExist = recordDir.exists();
+        if(!RecoredsExist){
+            try{
+                recordDir.mkdir();
+            }catch (Exception ex){
+                String message = getExceptionAsString(ex);
+                new ErrorScreen("Something went wrog contactk with It workers \n\n " + message);
+            }
+        }
+
+        // back up database files
+        String CONTEXTPATH = "C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\src\\CONTEXT";
+        File CONTEXTDIRECTORY = new File(CONTEXTPATH);
+        String[] list = CONTEXTDIRECTORY.list();
+        for(String item : list){
+            Path  sourecePath = Paths.get(CONTEXTPATH + "\\" + item);
+            Path  destinationPath = Paths.get(recordDir +"\\" + item);
+            try {
+                Files.copy(sourecePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+            }catch (Exception ex){
+                String message = getExceptionAsString(ex);
+                new ErrorScreen("Something went wrog contactk with It workers \n\n " + message);
+            }
+        }
+    }
+
+    private static String getExceptionAsString(Throwable throwable) {
+        // Create a StringBuilder to build the exception information
+        StringBuilder exceptionInfo = new StringBuilder();
+
+        // Append the exception message
+        exceptionInfo.append("Exception Message: ").append(throwable.getMessage()).append("\n");
+
+        // Append the stack trace
+        exceptionInfo.append("Stack Trace:\n");
+        for (StackTraceElement element : throwable.getStackTrace()) {
+            exceptionInfo.append(element).append("\n");
+        }
+
+        // If there is a cause, append its information recursively
+        Throwable cause = throwable.getCause();
+        if (cause != null) {
+            exceptionInfo.append("\nCause:\n").append(getExceptionAsString(cause));
+        }
+
+        return exceptionInfo.toString();
+    }
+
+    private  static void Logger(String path , String message){
+        // creating logging folder
+        File theDir = new File("C:\\Users\\yagiz\\Desktop\\HotelManagementSystem\\Logs");
+        boolean RecoredsExist = theDir.exists();
+        if(!RecoredsExist){
+            try{
+                theDir.mkdir();
+            }catch (Exception ex){
+                String errorMessage = getExceptionAsString(ex);
+                new ErrorScreen("Something went wrog contack with It workers \n\n " + errorMessage);
+            }
+        }
+        //
+
+    }
+
 
 }
