@@ -1,8 +1,7 @@
 import CODE.*;
-import UI.LogIn;
+import UI.RegisterCustomerPanel;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +13,8 @@ public class Main {
             @Override
             public void run() {
                 try{
-                    new LogIn();
+//                    new LogIn();
+                    new RegisterCustomerPanel();
                 }catch (Exception e){
                     e.printStackTrace();
                 }

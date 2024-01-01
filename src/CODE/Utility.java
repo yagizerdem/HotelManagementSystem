@@ -68,4 +68,13 @@ public class Utility {
         }
     }
 
+    public static int findIndex(String[] array, String targetValue) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(targetValue)) {
+                return i; // Found the index
+            }
+        }
+        return -1; // Value not found in the array
+    }
+
 }

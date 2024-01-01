@@ -1,4 +1,4 @@
 AdminDb --> [AdminUserId];[FirstName];[LastName];[UserName];[Password];
 RoomDb -->[RoomId];[FloorNo];[bedCount];[roomFacility];[price];[OccupiedCustomerId]; // if occupied customer id is -1 room is available
-CustomerDb --> [CustomerId];[FirstName];[LastName];[EntrenceDate];[ExitDate]
+CustomerDb --> [CustomerId];[FirstName];[LastName];[EntrenceDate];[ExitDate];[TC];[Payment]
 ReceptionistDb --> [ReceptionistUserId];[FirstName];[LastName];[UserName];[Salary];[Password]

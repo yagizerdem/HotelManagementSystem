@@ -4,12 +4,17 @@ import CODE.Room;
 import CODE.Utility;
 import CODE.VirtualDatabase;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.util.ArrayList;
 public class ReceptionistPanel {
 
     private JFrame frame;
     // Table
-    private JTable j;
+    private JTable table;
+    private JButton registerCustomerButton;
     public  ReceptionistPanel(){
         Init();
     }
@@ -20,6 +25,7 @@ public class ReceptionistPanel {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // fetching data from virtual database
@@ -36,9 +42,24 @@ public class ReceptionistPanel {
         }
 
         // Initializing the JTable
-        j = new JTable(data, columnNames);
-        j.setBounds(30, 40, 200, 300);
-        JScrollPane sp = new JScrollPane(j);
+        table = new JTable(data, columnNames);
+        table.setBounds(30, 40, 200, 300);
+        JScrollPane sp = new JScrollPane(table);
         frame.add(sp);
+
+        registerCustomerButton = new JButton("Register Customer");
+        registerCustomerButton.setLayout(null);
+        registerCustomerButton.setBounds(100, 300, 150, 30);
+        registerCustomerButton.setSize(new Dimension(50, 50));
+        frame.add(registerCustomerButton , BorderLayout.SOUTH);
+        frame.pack();
+
+        registerCustomerButton.addActionListener(e ->{
+            frame.dispose();
+            new RegisterCustomerPanel();
+        });
+
+
+
     }
 }

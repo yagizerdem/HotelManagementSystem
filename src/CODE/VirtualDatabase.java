@@ -69,6 +69,8 @@ public class VirtualDatabase {
             newCustomer.Id = Integer.parseInt(columns[0]);
             newCustomer.FirstName = columns[1];
             newCustomer.LastName = columns[2];
+            newCustomer.TC = columns[5];
+            newCustomer.Payment = Integer.parseInt(columns[6]);
             try {
                 newCustomer.EntrenceDate = new SimpleDateFormat("dd/MM/yyyy").parse(columns[3]);
                 newCustomer.ExitDate = new SimpleDateFormat("dd/MM/yyyy").parse(columns[4]);
