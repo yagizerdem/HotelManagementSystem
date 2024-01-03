@@ -3,6 +3,7 @@ package CODE;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 // database on ram
 public class VirtualDatabase {
@@ -72,8 +73,8 @@ public class VirtualDatabase {
             newCustomer.TC = columns[5];
             newCustomer.Payment = Integer.parseInt(columns[6]);
             try {
-                newCustomer.EntrenceDate = new SimpleDateFormat("dd/MM/yyyy").parse(columns[3]);
-                newCustomer.ExitDate = new SimpleDateFormat("dd/MM/yyyy").parse(columns[4]);
+                newCustomer.EntrenceDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(columns[3]);
+                newCustomer.ExitDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).parse(columns[4]);
 
                 CustomerDatabase.add(newCustomer);
             } catch (ParseException e) {

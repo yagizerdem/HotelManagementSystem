@@ -1,7 +1,14 @@
 package UI;
 
-import javax.swing.*;
+import CODE.Customer;
+import CODE.Receptionist;
+import CODE.Repository;
+import CODE.VirtualDatabase;
 
+import javax.swing.*;
+import java.io.Console;
+import java.util.Calendar;
+import java.util.Date;
 public class RegisterCustomerPanel {
 
     private JFrame frame;
@@ -91,8 +98,21 @@ public class RegisterCustomerPanel {
                 int DiscountRate = Integer.parseInt(DiscountRateField.getText());
                 String  Tc = TCField.getText();
                 int AcomodationAmount = Integer.parseInt(AccomodationAmountField.getText());
+                // crate customer
+                Customer newCustomer = new Customer();
+                newCustomer.FirstName = FirstName;
+                newCustomer.LastName = LastName;
+                newCustomer.Payment =  Price * (100-DiscountRate) / 100;
+                newCustomer.TC = Tc;
+                newCustomer.EntrenceDate = new Date();
 
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(newCustomer.EntrenceDate);
+                calendar.add(Calendar.DAY_OF_MONTH, AcomodationAmount);
+                Date updatedDate = calendar.getTime();
+                newCustomer.ExitDate = updatedDate;
 
+                Repository.RegisterCustomer(newCustomer);
                 frame.dispose();
                 new ReceptionistPanel();
             }catch (Exception ex){

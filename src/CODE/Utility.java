@@ -4,10 +4,7 @@ import UI.ErrorScreen;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.util.*;
 import java.nio.file.*;
 public class Utility {
 
@@ -149,4 +146,55 @@ public class Utility {
         return exceptionInfo.toString();
     }
 
+    // batch transaction
+    public static void DatabaseTransaction(){
+        // wrtie files
+        String data = "";
+        for(Admin admin : VirtualDatabase.AdminDatabase){
+            String template = "%s;%s;%s;%s;%s";
+            String formattedString = String.format(template, admin.Id , admin.FirstName , admin.LastName, admin.UserName,admin.Password );
+            data += formattedString + "\n";
+        }
+        WriteFile(StaticDetails.AdminDatabasePath , data);
+        data = "";
+        for(Receptionist receptionist: VirtualDatabase.ReceptionistDatabase){
+            String template = "%s;%s;%s;%s;%s;%s";
+            String formattedString = String.format(template, receptionist.Id , receptionist.FirstName , receptionist.LastName,
+                    receptionist.UserName,receptionist.Salary,receptionist.Password );
+            data += formattedString + "\n";
+        }
+        WriteFile(StaticDetails.ReceptionistDatatbasePath , data);
+        data = "";
+        for(Room room: VirtualDatabase.RoomDatabase){
+            String template = "%s;%s;%s;%s;%s;%s;%s";
+            String arrayAsString = Arrays.toString(room.roomFacility);
+            // Manipulate the string to remove square brackets and spaces
+            String commaSeparatedString = arrayAsString.substring(1, arrayAsString.length() - 1).replace(" ", "");
+            System.out.println(commaSeparatedString);
+            String formattedString = String.format(template, room.Id , room.floorNo,
+                    room.bedCount , commaSeparatedString , room.price , room.OccupiedCustomerId , room.Isinmaintenance);
+            data += formattedString + "\n";
+        }
+        WriteFile(StaticDetails.RoomDatabasePath , data);
+        data = "";
+        for(Customer customer: VirtualDatabase.CustomerDatabase){
+            String template = "%s;%s;%s;%s;%s;%s;%s";
+            String formattedString = String.format(template, customer.Id , customer.FirstName,
+                    customer.LastName , customer.EntrenceDate , customer.ExitDate , customer.TC , customer.Payment);
+            data += formattedString + "\n";
+        }
+        WriteFile(StaticDetails.CustomerDatabasePath , data);
+        data = "";
+    }
+
+    public  static void WriteFile(String path , String content){
+        Path filePath = Path.of(path);
+        try {
+            // Write the content to the file
+            Files.write(filePath, content.getBytes(), StandardOpenOption.CREATE);
+            System.out.println("File written successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
